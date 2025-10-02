@@ -12,6 +12,8 @@ public class Main {
     {
         String caminhoArquivo = "C:/Users/gustavo_pelissari150/Desktop/teste.txt";
 
-        Leitor.lerHostname(caminhoArquivo);
+        Leitor.setCaminhoArquivo(caminhoArquivo);
+
+        Leitor.lerHostname();
     }
 }
