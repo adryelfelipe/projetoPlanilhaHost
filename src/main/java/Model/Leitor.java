@@ -90,7 +90,7 @@ public class Leitor {
         return "MAC não encontrado!";
     }
 
-    public static ArrayList<Computador> gerarComputador() throws UnknownHostException {
+    public static ArrayList<Computador> gerarComputadores() throws UnknownHostException {
 
         ArrayList<Computador> computadores = new ArrayList<>();
 
