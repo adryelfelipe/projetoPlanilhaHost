@@ -23,29 +23,31 @@ public class Leitor {
     // -- MÉTODOS ESTÁTICOS -- //
 
     // LÊ O HOSTNAME
-    public static void lerHostname()
+    private static ArrayList<String> lerHostname()
     {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(caminhoArquivo)))
         {
+            ArrayList<String> hostNames = new ArrayList<>();
+
             String hostName;
 
             while((hostName = bufferedReader.readLine()) != null)
             {
-                String ip = adquireIpv4(hostName);
-                String mac = adquireMac(ip);
-
-                System.out.println(hostName+" || "+ip+ " || "+mac );
+                hostNames.add(hostName);
             }
+
+            return hostNames;
         }
         catch (IOException e)
         {
             System.err.println("Erro ao ler arquivo: "+ caminhoArquivo+": "+ e.getMessage());
-        }
 
+            return null;
+        }
     }
 
     // RESGATA IP A PARTIR DO HOSTNAME
-    public static String adquireIpv4(String hostName) throws UnknownHostException {
+    private static String adquireIpv4(String hostName) throws UnknownHostException {
         try {
             // CRIA UM OBJETO DO TIPO INETADDRESS QUE REPRESENTA O MEU ENDERECO
             InetAddress endereco = InetAddress.getByName(hostName);
@@ -59,7 +61,7 @@ public class Leitor {
     }
 
     // RESGATA O MAC A PARTIR DO Ipv4
-    public static String adquireMac(String ipv4)
+    private static String adquireMac(String ipv4)
     {
         try
         {
@@ -86,5 +88,23 @@ public class Leitor {
             System.err.println("Erro ao ler ao resgatar MAC " +e.getMessage());
         }
         return "MAC não encontrado!";
+    }
+
+    public static ArrayList<Computador> gerarComputador() throws UnknownHostException {
+
+        ArrayList<Computador> computadores = new ArrayList<>();
+
+        for(String hostName : lerHostname()) {
+
+            String nome = hostName;
+            String ipComputador = adquireIpv4(nome);
+            String macComputador = adquireMac(ipComputador);
+
+            Computador computador = new Computador(nome, ipComputador, macComputador);
+
+            computadores.add(computador);
+        }
+
+        return computadores;
     }
 }
