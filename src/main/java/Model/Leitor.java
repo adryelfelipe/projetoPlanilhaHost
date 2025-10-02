@@ -9,7 +9,21 @@ public class Leitor {
     // -- MÉTODOS ESTÁTICOS -- //
 
     // LÊ O HOSTNAME
-    public static void lerHostname() {
+    public static void lerHostname(String arquivo)
+    {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(arquivo)))
+        {
+            String hostName;
+
+            while((hostName = bufferedReader.readLine()) != null)
+            {
+                System.out.println(adquireIpv4(hostName));
+            }
+        }
+        catch (IOException e)
+        {
+            System.err.println("Erro ao ler arquivo: "+ arquivo+": "+ e.getMessage());
+        }
 
     }
 
