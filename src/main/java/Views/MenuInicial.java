@@ -20,6 +20,9 @@ public class MenuInicial {
             System.out.println("[1] - (Adicionar/Trocar) LOCAL DO ARQUIVO");
             System.out.println("[2] - OBTER AS INFORMAÇÕES");
             System.out.println("[3] - SAIR DO SISTEMA");
+
+            System.out.println(); // PULA LINHA
+
             System.out.print("DIGITE SUA OPÇÃO: ");
             int op = Ferramentas.lerOp();
 

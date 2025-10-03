@@ -21,7 +21,7 @@ public class MenuCaminho {
 
         System.out.println(); // pula linha
 
-        System.out.println("DIGITE O CAMINHO DO ARQUIVO: ");
+        System.out.print("DIGITE O CAMINHO DO ARQUIVO: ");
         String caminhoArquivo = Ferramentas.lerCaminho();
 
         if(leitorService.verificarCaminho(caminhoArquivo)) {
