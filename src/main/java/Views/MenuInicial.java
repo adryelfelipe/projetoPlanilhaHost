@@ -38,7 +38,10 @@ public class MenuInicial {
                     MenuLeitor.menuLeitor();
                 }
 
-                case 3 -> continuar = false;
+                case 3 -> {
+                    MenuSair.menuSair();
+                    continuar = false;
+                }
 
                 default -> {
                     System.out.println("ERRO! OPÇÃO INCORRETA");
