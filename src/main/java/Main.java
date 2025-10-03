@@ -1,3 +1,4 @@
+import DAO.ExcelDAO;
 import Model.Leitor;
 
 import java.io.*;
@@ -10,10 +11,11 @@ public class Main {
 
 
     public static void main(String[] args) throws UnknownHostException {
-        String caminhoArquivo = "C:/Users/adryel_souza/Downloads/teste.txt";
+        String caminhoArquivo = "C:/Users/gustavo_pelissari150/Downloads/teste.txt";
+        String arquivoExcel = "C:/Users/gustavo_pelissari150/Documents/Relatório_Excel_v2.xlsx";
 
         Leitor.setCaminhoArquivo(caminhoArquivo);
 
-        System.out.println(Leitor.gerarComputador());
+        ExcelDAO.saveInventory(Leitor.gerarComputadores(), arquivoExcel);
     }
 }
