@@ -1,4 +1,5 @@
 import Model.Leitor;
+import Views.MenuInicial;
 
 import java.io.*;
 import java.net.InetAddress;
@@ -10,10 +11,7 @@ public class Main {
 
 
     public static void main(String[] args) throws UnknownHostException {
-        String caminhoArquivo = "C:/Users/adryel_souza/Downloads/teste.txt";
 
-        Leitor.setCaminhoArquivo(caminhoArquivo);
-
-        System.out.println(Leitor.gerarComputador());
+        MenuInicial.menuInicial();
     }
 }

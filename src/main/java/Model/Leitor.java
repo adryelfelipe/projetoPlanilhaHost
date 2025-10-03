@@ -1,5 +1,7 @@
 package Model;
 
+import Services.ComputadorService;
+
 import java.io.*;
 import java.net.*;
 import java.util.*;
@@ -8,8 +10,9 @@ import java.util.regex.Pattern;
 
 public class Leitor {
 
-    // -- ATRIBUTO ESTÁTICO -- //
+    // -- ATRIBUTOS -- //
     private static String caminhoArquivo;
+    private static ComputadorService computadorService = new ComputadorService();
 
     // -- SETTERS E GETTERS -- //
     public static String getCaminhoArquivo() {
@@ -100,9 +103,11 @@ public class Leitor {
             String ipComputador = adquireIpv4(nome);
             String macComputador = adquireMac(ipComputador);
 
-            Computador computador = new Computador(nome, ipComputador, macComputador);
+            if(computadorService.verificarInformacoes(nome, ipComputador, macComputador)) {
+                Computador computador = new Computador(nome, ipComputador, macComputador);
 
-            computadores.add(computador);
+                computadores.add(computador);
+            }
         }
 
         return computadores;
